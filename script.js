@@ -20,3 +20,27 @@ function addBookToLibrary() {
 
     myLibrary.push(book);
 }
+
+/* 
+user press + *
+screen goes dimmed *
+pop-up appears with field data *
+user enters data in fields and press add button *
+book appears on list
+user can delete the item by pressing the delete button
+*/
+
+/* POP-UP FIELD */
+
+const addBookBtn = document.getElementById('addBook');
+addBookBtn.addEventListener('click', createDOMFields());
+
+function createDOMFields() {
+    const dimmer = document.querySelector('#dimmer');
+    dimmer.classList.add('dimmed');
+
+    const template = document.querySelector('#template');
+    const templateClone = template.content.cloneNode(true);
+    document.querySelector('#dimmer').appendChild(templateClone);
+}
+

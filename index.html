@@ -9,6 +9,29 @@
     <script defer src="./script.js"></script>
 </head>
 <body>
+    <div id="dimmer">
+        <template id="template">
+            <div id="formContainer">
+                <button>X</button>
+                <form action="">
+                    <label for="book_title">Title</label>
+                    <input type="text" name="book_title" id="book_title">
+                    <label for="book_author">Author</label>
+                    <input type="text" name="book_author" id="book_author">
+                    <label for="book_pages">Number of pages</label>
+                    <input type="text" name="book_pages" id="book_pages">
+                    <fieldset>
+                        <legend>Have you read it?</legend>
+                        <label for="read">Yes</label>
+                        <input type="radio" name="isRead" id="read" value="true">
+                        <label for="notRead">No</label>
+                        <input type="radio" name="isRead" id="notRead" value="false">
+                    </fieldset>
+                    <button type="submit"> Add book</button>
+                </form>
+            </div>
+        </template>
+    </div>
     <div id="sidebar">
         <div id="logo">
             <img class="bigIcon" src="./icons/bookshelf.svg" alt="By Thomas de Saint-Exupéry">
@@ -35,6 +58,28 @@
                 <div class="tHeader">Author</div>
                 <div class="tHeader">Pages</div>
                 <div class="tHeader">Status</div>
+                <div> </div>
+            </div>
+            <div class="row">
+                <div> </div>
+                <div>La Nausée</div>
+                <div>Sartre</div>
+                <div>100</div>
+                <div>Read</div>
+            </div>
+            <div class="row">
+                <div> </div>
+                <div>La Nausée</div>
+                <div>Sartre</div>
+                <div>100</div>
+                <div>Read</div>
+            </div>
+            <div class="row">
+                <div> </div>
+                <div>La Nausée</div>
+                <div>Sartre</div>
+                <div>100</div>
+                <div>Read</div>
             </div>
         </div>
     </div>
