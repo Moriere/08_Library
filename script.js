@@ -5,35 +5,14 @@ function Book (title, author, nPages, isRead) {
     this.isRead = isRead
 };
 
-let myLibrary = [];
-
-function addBookToLibrary() {
-    /*
-    create a new book Object
-    take title from an text input
-    take author from an text input
-    take #pages from a number input
-    take isRead from a radial button
-    */
-
+function addBookToLibrary(form) {
     let book = new Book();
-
+    book.title = form.elements['book_title'].value;
+    book.author = form.elements['book_author'].value;
+    book.nPages = form.elements['book_pages'].value;
+    book.isRead = document.querySelector('input[name="isRead"]:checked').value;
     myLibrary.push(book);
 }
-
-/* 
-user press + *
-screen goes dimmed *
-pop-up appears with field data *
-user enters data in fields and press add button *
-book appears on list
-user can delete the item by pressing the delete button
-*/
-
-/* POP-UP FIELD */
-
-const addBookBtn = document.getElementById('addBook');
-addBookBtn.addEventListener('click', createDOMFields());
 
 function createDOMFields() {
     const dimmer = document.querySelector('#dimmer');
@@ -41,6 +20,25 @@ function createDOMFields() {
 
     const template = document.querySelector('#template');
     const templateClone = template.content.cloneNode(true);
-    document.querySelector('#dimmer').appendChild(templateClone);
-}
+    dimmer.appendChild(templateClone);
 
+    const closeBtn = document.querySelector('#closeBtn');
+    closeBtn.addEventListener('click', () => {
+        const formContainer = document.querySelector('#formContainer');
+        dimmer.removeChild(formContainer);
+        dimmer.classList.remove('dimmed');
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        addBookToLibrary(form);
+        form.submit();
+    });
+};
+
+/* POP-UP FIELD */
+
+let myLibrary = [];
+const addBookBtn = document.getElementById('addBook');
+addBookBtn.addEventListener('click', createDOMFields);

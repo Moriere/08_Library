@@ -1,4 +1,12 @@
+/* GENERAL STYLYING */
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300&family=Libre+Baskerville:ital@0;1&display=swap');
+
+:root {
+    --dark-gray: rgb(50, 50, 50);
+    --medium-gray: rgb(220, 220, 220);
+    --light-gray: rgb(245, 245, 245);
+}
 
 body {
     box-sizing: border-box;
@@ -8,12 +16,33 @@ body {
     font-size: 17px;
     display: grid;
     grid: 1fr .2fr 5fr / minmax(300px, 1fr) 4fr;
+    color: var(--dark-gray);
 }
+
+.bigIcon {
+    height: 60px;
+}
+
+.smallIcon {
+    height: 30px;
+}
+
+button {
+    background-color: white;
+    border: var(--dark-gray) 2px solid;
+    background-color: white;
+}
+
+button:hover {
+    background-color: var(--light-gray);
+}
+
+/* GENERAL LAYOUT */
 
 #sidebar {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
-    background-color: gainsboro;
+    background-color: var(--medium-gray);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,10 +56,6 @@ body {
     font-family: 'Libre Baskerville', serif;
     font-size: 2.5rem;
     font-weight: 400;
-}
-
-.bigIcon {
-    height: 60px;
 }
 
 #header {
@@ -47,21 +72,17 @@ body {
 #addBook {
     width: 50px;
     height: 50px;
-    border: black 2px solid;
-    background-color: white;
-    font-size: 1.2em;
     padding: 0;
-}
-
-#addBook:hover {
-    background-color: rgb(235, 235, 235);
+    font-size: 1.2em;
 }
 
 #transition {
     margin: 0 5em;
     padding: 0 5em;
-    border-bottom: 1px black solid;
+    border-bottom: 1px var(--dark-gray) solid;
 }
+
+/* TABLE CONTENT */
 
 #main {
     margin: 1em 5em;
@@ -84,12 +105,10 @@ body {
 }
 
 .table > .row:nth-child(even) {
-    background-color: rgb(245, 245, 245);
+    background-color: var(--light-gray)
 }
 
-.table > .row:first-child {
-    background-color: white;
-}
+/* POP-UP FORM */
 
 #dimmer {
     position: absolute;
@@ -107,11 +126,56 @@ body {
 
 #formContainer {
     background-color: white;
-    padding: 20px;
+    padding: 2em;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: .5em;
+    gap: .7em;
+}
+
+#closeBtn {
+    border: none;
+    margin-left: 85%;
+    margin-bottom: 1em;
+    padding: 0;
+    display: flex;
+}
+
+#closeBtn:hover {
+    cursor: pointer;
+}
+
+button[type=submit] {
+    margin-top: 1em;
+    padding: 1.2em 0;
+}
+
+input[type=text] {
+    width: 15em;
+    font-family: inherit;
+    font-size: inherit;
+    padding: .5em;
+    border: var(--medium-gray) 1px solid;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border: var(--dark-gray) solid 1px;
+}
+
+input[type=text]:focus::placeholder {
+    color: transparent;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border: red solid 1px;
+}
+
+fieldset {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border: var(--medium-gray) 1px solid;
 }
