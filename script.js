@@ -14,6 +14,13 @@ function addBookToLibrary(form) {
     myLibrary.push(book);
 }
 
+function removeInputFields() {
+    const dimmer = document.querySelector('#dimmer');
+    const formContainer = document.querySelector('#formContainer');
+    dimmer.removeChild(formContainer);
+    dimmer.classList.remove('dimmed');
+}
+
 function createDOMFields() {
     const dimmer = document.querySelector('#dimmer');
     dimmer.classList.add('dimmed');
@@ -23,17 +30,13 @@ function createDOMFields() {
     dimmer.appendChild(templateClone);
 
     const closeBtn = document.querySelector('#closeBtn');
-    closeBtn.addEventListener('click', () => {
-        const formContainer = document.querySelector('#formContainer');
-        dimmer.removeChild(formContainer);
-        dimmer.classList.remove('dimmed');
-    });
+    closeBtn.addEventListener('click', removeInputFields);
 
     const form = document.querySelector('form');
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         addBookToLibrary(form);
-        form.submit();
+        removeInputFields();
     });
 };
 
