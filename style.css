@@ -35,6 +35,7 @@ button {
 
 button:hover {
     background-color: var(--light-gray);
+    cursor: pointer;
 }
 
 /* GENERAL LAYOUT */
@@ -96,16 +97,43 @@ button:hover {
     width: 100%;
     grid: 1.2em / 1fr;
     grid-auto-rows: 1.2em;
-    gap: .2em;
+    gap: .3em;
 }
 
 .table > .row {
     display: grid;
     grid: 1fr / 1fr 5fr 5fr 2fr 2fr 1fr;
+    align-items: center;
 }
 
 .table > .row:nth-child(even) {
     background-color: var(--light-gray)
+}
+
+.row button {
+    border: none;
+    background-color: transparent;
+    color: var(--dark-gray);
+    font: inherit;
+    font-size: inherit;
+    padding: 0;
+}
+
+#statusToggle:hover {
+    font-weight: bold;
+}
+
+.row svg {
+    height: 1.2em;
+}
+
+.row svg:hover {
+    fill: red;
+}
+
+#deleteBtn {
+    display: flex;
+    align-items: center;
 }
 
 /* POP-UP FORM */
@@ -143,10 +171,6 @@ form {
     display: flex;
 }
 
-#closeBtn:hover {
-    cursor: pointer;
-}
-
 button[type=submit] {
     margin-top: 1em;
     padding: 1.2em 0;
@@ -167,6 +191,11 @@ input[type=text]:focus {
 
 input[type=text]:focus::placeholder {
     color: transparent;
+}
+
+input[type=text]::placeholder {
+    color: var(--medium-gray);
+    font-style: italic;
 }
 
 input:invalid:not(:placeholder-shown) {

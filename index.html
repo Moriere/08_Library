@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="dimmer">
-        <template id="template">
+        <template id="formTemplate">
             <div id="formContainer">
                 <button id="closeBtn">
                     <img src="./icons/close.svg" alt="By Google" class="smallIcon">
@@ -62,27 +62,20 @@
                 <div class="tHeader">Status</div>
                 <div> </div>
             </div>
-            <div class="row">
-                <div> </div>
-                <div>La Nausée</div>
-                <div>Sartre</div>
-                <div>100</div>
-                <div>Read</div>
-            </div>
-            <div class="row">
-                <div> </div>
-                <div>La Nausée</div>
-                <div>Sartre</div>
-                <div>100</div>
-                <div>Read</div>
-            </div>
-            <div class="row">
-                <div> </div>
-                <div>La Nausée</div>
-                <div>Sartre</div>
-                <div>100</div>
-                <div>Read</div>
-            </div>
+            <template id="rowTemplate">
+                <div class="row">
+                    <div> </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <button id="statusToggle">Read</button>
+                    </div>
+                    <button id="deleteBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" /></svg>
+                    </button>
+                </div>
+            </template>
         </div>
     </div>
     <div id="footer">
