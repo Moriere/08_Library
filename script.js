@@ -49,16 +49,17 @@ function addRow() {
 
     const lastBookIndex = myLibrary.length - 1;
 
-    table.lastElementChild.classList.add(`${lastBookIndex}`);
+    table.lastElementChild.classList.add(`index${lastBookIndex}`);
     table.lastElementChild.querySelector('.deleteBtn').classList.add(`index${lastBookIndex}`);
+    table.lastElementChild.querySelector('.statusToggle').classList.add(`index${lastBookIndex}`);
 
     let i = 1;
     for(let key in myLibrary[lastBookIndex]) {
         if (myLibrary[lastBookIndex][key] === 'true') {
-            table.lastElementChild.querySelector(`:nth-child(${i + 1})`).textContent = 'Read';
+            table.lastElementChild.querySelector(`:nth-child(${i + 1}) > button`).textContent = 'Read';
         }
         else if (myLibrary[lastBookIndex][key] === 'false') {
-            table.lastElementChild.querySelector(`:nth-child(${i + 1})`).textContent = 'Unread';
+            table.lastElementChild.querySelector(`:nth-child(${i + 1}) > button`).textContent = 'Unread';
         } else {
             table.lastElementChild.querySelector(`:nth-child(${i + 1})`).textContent = myLibrary[lastBookIndex][key];
         }
@@ -68,6 +69,15 @@ function addRow() {
     const deleteBtn = document.querySelector(`.deleteBtn.index${lastBookIndex}`);
     deleteBtn.addEventListener('click', () => {
         table.removeChild(deleteBtn.parentNode);
+    });
+
+    const statusBtn = document.querySelector(`.statusToggle.index${lastBookIndex}`);
+    statusBtn.addEventListener('click', () => {
+        if (statusBtn.textContent === 'Read') {
+            statusBtn.textContent = 'Unread';
+        } else {
+            statusBtn.textContent = 'Read';
+        }
     });
 };
 
