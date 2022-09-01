@@ -13,16 +13,16 @@ function addBookToLibrary(form) {
     book.isRead = document.querySelector('input[name="isRead"]:checked').value;
     myLibrary.push(book);
     addRow();
-}
+};
 
 function removeInputFields() {
     const dimmer = document.querySelector('#dimmer');
     const formContainer = document.querySelector('#formContainer');
     dimmer.removeChild(formContainer);
     dimmer.classList.remove('dimmed');
-}
+};
 
-function createDOMFields() {
+function createInputFields() {
     const dimmer = document.querySelector('#dimmer');
     dimmer.classList.add('dimmed');
 
@@ -41,10 +41,6 @@ function createDOMFields() {
     });
 };
 
-let myLibrary = [];
-const addBookBtn = document.getElementById('addBook');
-addBookBtn.addEventListener('click', createDOMFields);
-
 function addRow() {
     const table = document.querySelector('.table');
     const template = document.querySelector('#rowTemplate');
@@ -54,14 +50,31 @@ function addRow() {
     const lastBookIndex = myLibrary.length - 1;
 
     table.lastElementChild.classList.add(`${lastBookIndex}`);
-/*     table.lastElementChild.querySelector('.title').textContent = myLibrary[myLibrary.length - 1].title; */
+    table.lastElementChild.querySelector('.deleteBtn').classList.add(`index${lastBookIndex}`);
 
     let i = 1;
     for(let key in myLibrary[lastBookIndex]) {
-        table.lastElementChild.querySelector(`.row :nth-child(${i + 1})`).textContent = myLibrary[lastBookIndex][key];
+        if (myLibrary[lastBookIndex][key] === 'true') {
+            table.lastElementChild.querySelector(`:nth-child(${i + 1})`).textContent = 'Read';
+        }
+        else if (myLibrary[lastBookIndex][key] === 'false') {
+            table.lastElementChild.querySelector(`:nth-child(${i + 1})`).textContent = 'Unread';
+        } else {
+            table.lastElementChild.querySelector(`:nth-child(${i + 1})`).textContent = myLibrary[lastBookIndex][key];
+        }
         i++;
     };
+
+    const deleteBtn = document.querySelector(`.deleteBtn.index${lastBookIndex}`);
+    deleteBtn.addEventListener('click', () => {
+        table.removeChild(deleteBtn.parentNode);
+    });
 };
+
+let myLibrary = [];
+const addBookBtn = document.getElementById('addBook');
+addBookBtn.addEventListener('click', createInputFields);
+
 /* 
 after clicking submit
 run the function addRow

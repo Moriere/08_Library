@@ -131,7 +131,7 @@ button:hover {
     fill: red;
 }
 
-#deleteBtn {
+.deleteBtn {
     display: flex;
     align-items: center;
 }
