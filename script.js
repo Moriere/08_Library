@@ -67,9 +67,11 @@ function addRow() {
     };
 
     const deleteBtn = document.querySelector(`.deleteBtn.index${lastBookIndex}`);
-    deleteBtn.addEventListener('click', () => {
+    deleteBtn.addEventListener('click', (event) => {
+        const index =  Number(event.target.parentNode.classList[1].substr(5));
+        myLibrary.splice(index, 1, 'empty');
         table.removeChild(deleteBtn.parentNode);
-    });
+    }), {once: true};
 
     const statusBtn = document.querySelector(`.statusToggle.index${lastBookIndex}`);
     statusBtn.addEventListener('click', () => {
