@@ -84,11 +84,3 @@ function addRow() {
 let myLibrary = [];
 const addBookBtn = document.getElementById('addBook');
 addBookBtn.addEventListener('click', createInputFields);
-
-/* 
-after clicking submit
-run the function addRow
-    get the template, clone and create new row
-    get each of divs, edit node text content with myLibrary[i].key
-    add an event listener to the button with delete icon and the status toggle
-*/
